@@ -1,0 +1,173 @@
+/* Set background color */
+body {
+    background-color: black !important;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/*navbar*/
+
+/* Custom navbar styles */
+.custom-navbar {
+    background-color: black !important;  /* Set navbar background */
+    border-bottom: 1px solid gray !important;
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-color: white; /* Ensure visibility */
+}
+
+/* Alternative method using filter (Recommended) */
+.custom-navbar .navbar-toggler-icon {
+    filter: invert(1) brightness(2); /* Turns black icon to white */
+}
+
+/* Change text color */
+.custom-navbar ,
+.custom-navbar .nav-link {
+    color: gray !important;  /* Ensure navbar text is white */
+}
+.navbar-brand{
+    color: white !important;
+}
+/* Change navbar links color on hover */
+.custom-navbar .nav-link:hover {
+    color: lightgray !important;
+}
+
+/* Ensure dropdown menu is also styled */
+.custom-navbar .dropdown-menu {
+    background-color: black !important;
+}
+
+.custom-navbar .dropdown-menu .dropdown-item {
+    color: white !important;
+}
+
+.custom-navbar .dropdown-menu .dropdown-item:hover {
+    background-color: gray !important;
+}
+
+/*banner*/
+.banner{
+    color: white;
+    height: 90vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-bottom: 1px solid gray;*/
+}
+.banner h1,p{
+    margin-bottom: 2rem;
+}
+.banner button{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+    border: none;
+}
+.banner p{
+    color: gray;
+}
+.banner button:hover{
+    background-color: gray;
+}
+
+/*signup*/
+.box{
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid gray;
+    color: white;
+}
+.form-floating{
+    margin-bottom: 1rem;
+}
+.form-floating input{
+    font-size: 1rem;
+    background-color: transparent;
+    border: 1px solid gray;
+    color: white;
+}
+.form-floating input:focus {
+    background-color: transparent !important;
+    color: white !important;
+    border:1px solid gray !important;
+}
+
+.form-floating > .form-control:focus ~ label::after {
+    background-color: transparent;
+}
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after{
+    background-color: transparent !important;
+}
+.form-floating>.form-control-plaintext~label, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+    color: gray;
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+}
+
+.box button {
+    background-color: white; /* White background */
+    border: none;  /* Border color */
+    padding: 10px 20px;       /* Button padding */
+    cursor: pointer;         /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    color: black;
+}
+
+.box button:active,.box button:hover{
+    background-color:#E2E2E2 !important; /* Lighter background on hover */
+    color: black !important;
+}
+.box-container{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*about section*/
+.about-section {
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+.container {
+    padding: 20px;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.column {
+    flex: 1;
+    max-width: 300px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+.column img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+.column h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: white;
+}
+.column p {
+    font-size: 1em;
+    color: gray;
+}
+.invalid-feedback{
+    display: block;
+}

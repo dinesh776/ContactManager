@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Smart Contact Manager</title>
+</head>
+<body th:replace="~{base::layout(~{::section})}">
+  <section >
+    <div class="box-container">
+      <div class="box">
+        <form th:action="@{/authenticate_user}" method="post">
+          <h1 class="h3 mb-3 fw-normal" >Login</h1>
+          <p style="color: gray">Enter your userName,password below to Login</p>
+          <div th:if="${param.error}" class="alert alert-danger" style="border: none;background-color: transparent;padding: 0;filter: brightness(500%)">Incorrect Username and Password</div>
+          <div th:if="${param.logout}" class="alert alert-success" style="border: none;background-color: transparent;padding: 0;filter: brightness(500%)">You are Successfully logged out</div>
+
+          <div class="form-floating">
+            <input type="text" name="username" class="form-control" id="floatingEmail" placeholder="email@example.com">
+            <label for="floatingEmail">UserName</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Remember me
+            </label>
+          </div>
+
+          <button class="btn btn-primary w-100 py-2" type="submit">Log in</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

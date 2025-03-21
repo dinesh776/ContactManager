@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Dashboard/dashboard::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Contact Manager</title>
+</head>
+<body>
+  <section>
+    <div class="contacts-page">
+      <div th:if="${successMessage}" th:text="${successMessage}" style="text-align: center;border: none;color: green;background-color: transparent;padding: 0;"></div>
+      <div th:if="${errorMessage}" th:text="${errorMessage}" style="text-align: center;border: none;color: red;background-color: transparent;padding: 0;"></div>
+      <h2 style="text-align: center">Your Contacts</h2>
+      <div class="search-container">
+        <div class="sidebar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Contact" id="search">
+        </div>
+        <div class="search-result">
+<!--          <a>hello</a>-->
+        </div>
+      </div>
+
+      <div class="contacts-container">
+
+        <div class="contact" th:each="contact : ${contactCards}">
+          <div class="show-left show">
+            <input type="text" th:value="${contact.getcId()}" hidden="hidden">
+            <img src="" th:src="@{/images/Database/{filename}(filename=${contact.getImageUrl()})}" alt="profile-icon" width="40px" height="40px" style="border-radius: 50%;">
+            <h4 style="margin-top: 10px" th:text="${contact.getName().getFirst_name()}"></h4>
+          </div>
+          <div class="show-right show" >
+            <form th:action="@{'/user/fav/'+${contact.getcId()}+'/1'}" method="post">
+              <button type="submit" class="contact-style" name="fav"><i class="fa-heart " th:classappend="${contact.isFav()}?'fa-solid':'fa-regular'" ></i></button>
+            </form>
+
+
+            <form th:action="@{'/user/contacts/'+${contact.getcId()}}" method="get">
+              <button class="contact-style"> <i class="fa-solid fa-circle-info"></i></button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</body>
+</html>

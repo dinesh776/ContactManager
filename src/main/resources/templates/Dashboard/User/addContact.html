@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Dashboard/dashboard::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Contact Manager</title>
+</head>
+<body>
+  <section>
+<!--    <div class="add-contact contact-page">-->
+      <div class="add-contact-container">
+        <h2 style="text-align: center;">Add Contact</h2>
+        <div th:if="${successMessage}" th:text="${successMessage}" style="text-align: center;border: none;color: green;background-color: transparent;padding: 0;">bdfbndfbdfbn</div>
+        <div th:if="${errorMessage}" th:text="${errorMessage}" style="text-align: center;border: none;color: red;background-color: transparent;padding: 0;"></div>
+        <form th:object="${contact}" enctype="multipart/form-data" method="post" th:action="@{/user/process-contact}">
+          <div class="profile-img-container">
+            <div class="profile-img-wrapper">
+              <!-- Empty circle placeholder -->
+              <div class="profile-img-placeholder">
+                <img id="preview-image" src="" style="display: none;" alt="Profile preview">
+              </div>
+
+              <!-- Pen icon -->
+              <label for="profile-upload" class="edit-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                </svg>
+              </label>
+
+              <!-- Hidden file input -->
+              <input type="file"
+                     th:field="*{contactCard.imageFile}"
+                     id="profile-upload"
+                     class="profile-input"
+                     accept=".jpg,.jpeg,.png"
+                     hidden
+              />
+            </div>
+          </div>
+
+          <input th:field="*{name.first_name}" type="text" placeholder="First Name" id="first-name">
+
+
+          <div class="contact-name sec1">
+            <div class="middle-name">
+              <input th:field="*{name.middle_name}" type="text" placeholder="Middle Name" id="middle-name">
+            </div>
+            <div class="last-name">
+              <input type="text" th:field="*{name.last_name}" placeholder="Last Name" id="last-name">
+            </div>
+          </div>
+          <div class="sec1">
+            <div class="nickname">
+              <input th:field="*{contactCard.nickName}" type="text" placeholder="Nickname" id="nickname">
+            </div>
+            <div class="dob">
+              <input type="text"
+                     name="dob"
+                     th:field="*{contactCard.dob}"
+                     placeholder="Date of Birth"
+                     onfocus="(this.type='date')"
+                     onblur="if(!this.value)this.type='text'">
+            </div>
+          </div>
+
+          <div class="sec1">
+            <div class="contact-number">
+              <input th:field="*{contactCard.contact_number}" type="text" placeholder="Contact Number" id="contact-number">
+            </div>
+            <div class="email-id">
+              <input type="email" placeholder="Email ID" th:field="*{contactCard.email}" id="email-id">
+            </div>
+          </div>
+          <div class="sec1">
+            <div class="designation">
+              <input type="text" th:field="*{contactCard.designation}" placeholder="Designation" id="designation">
+            </div>
+            <div class="work-experience">
+              <input th:field="*{contactCard.workExp}" type="text" placeholder="Work Experience" id="work-experience">
+            </div>
+          </div>
+
+          <div class="description">
+            <textarea th:field="*{contactCard.about}" placeholder="Description" id="description"></textarea>
+          </div>
+          <div class="submit-button">
+            <button type="submit">Submit</button>
+          </div>
+
+        </form>
+      </div>
+<!--    </div>-->
+  </section>
+</body>
+</html>

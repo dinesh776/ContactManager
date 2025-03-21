@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Contact Manager</title>
+</head>
+<body th:replace="~{base::layout(~{::section})}">
+<section>
+    <div class="about-section" style="color: white">
+        <h1>About Us</h1>
+        <p>Welcome to Smart Contact Manager. We are dedicated to helping you manage your contacts efficiently and securely.</p>
+    </div>
+    <div class="container">
+        <h2 style="text-align:center; color: white;">Our Team</h2>
+        <div class="row">
+            <div class="column">
+                <img th:src="@{/images/team1.jpeg}" alt="Team Member 1">
+                <h2>John Doe</h2>
+                <p>CEO & Founder</p>
+                <p>John is the visionary behind Smart Contact Manager, leading the team with passion and dedication.</p>
+            </div>
+            <div class="column">
+                <img th:src="@{/images/team2.jpeg}" alt="Team Member 2">
+                <h2>Jane Smith</h2>
+                <p>Lead Developer</p>
+                <p>Jane is the technical genius, ensuring our platform runs smoothly and efficiently.</p>
+            </div>
+            <div class="column">
+                <img th:src="@{/images/team3.jpeg}" alt="Team Member 3">
+                <h2>Emily Johnson</h2>
+                <p>UI/UX Designer</p>
+                <p>Emily designs intuitive interfaces, making sure our users have the best experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

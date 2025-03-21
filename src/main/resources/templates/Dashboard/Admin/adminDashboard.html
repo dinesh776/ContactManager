@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+</head>
+<body th:replace="base::layout(~{::section})">
+<section>
+  <div class="container">
+    <h1>Welcome to Admin Dashboard</h1>
+
+    <!-- Logout Button -->
+    <form th:action="@{/logout}" method="post" class="mt-3">
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>

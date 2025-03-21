@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Dashboard/dashboard::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Contact Manager</title>
+</head>
+<body>
+
+<section>
+  <!-- profile page -->
+  <div class="add-contact profile-page">
+    <h2 style="text-align: center">Your Profile</h2>
+    <div class="add-contact-container">
+      <div th:if="${successMessage}" th:text="${successMessage}" style="text-align: center;border: none;color: green;background-color: transparent;padding: 0;">bdfbndfbdfbn</div>
+      <div th:if="${errorMessage}" th:text="${errorMessage}" style="text-align: center;border: none;color: red;background-color: transparent;padding: 0;"></div>
+      <form th:action="@{/user/update-user}" enctype="multipart/form-data" method="post" th:object="${userWrapper}">
+        <div class="profile-img-container">
+          <div class="profile-img-wrapper">
+            <!-- Empty circle placeholder -->
+            <div class="profile-img-placeholder">
+              <img id="preview-image" src="" th:src="@{/images/Database/{filename}(filename=${userWrapper.user.imageUrl})}"  style="display: block;" alt="Profile preview">
+            </div>
+
+            <!-- Pen icon -->
+            <label for="profile-upload" class="edit-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+              </svg>
+            </label>
+
+            <!-- Hidden file input -->
+            <input type="file"
+                   id="profile-upload"
+                   th:field="*{user.imageFile}"
+                   class="profile-input"
+                   accept=".jpg,.jpeg,.png"
+                   hidden
+            />
+          </div>
+        </div>
+
+        <input type="text" th:field="*{user.userName}" th:value="${userWrapper.getUser().getUserName()}" placeholder="User Name" id="username">
+        <div class="contact-name sec1">
+          <input type="text" th:field="*{name.first_name}" th:value="${userWrapper.getName().getFirst_name()}" placeholder="First Name" id="firstName" style="margin-left: 0;">
+          <div class="middle-name">
+            <input type="text" th:field="*{name.middle_name}" th:value="${userWrapper.getName().getMiddle_name()}" placeholder="Middle Name" id="middleName">
+          </div>
+        </div>
+
+        <div class="contact-name sec1">
+          <div class="last-name">
+            <input type="text" th:field="*{name.last_name}" th:value="${userWrapper.getName().getLast_name()}" placeholder="Last Name" id="last-name">
+          </div>
+          <div class="dob">
+            <input type="text"
+                   name="dob"
+                   th:field="*{user.dob}"
+                   th:value="${userWrapper.getUser().getDob()}"
+                   placeholder="Date of Birth"
+                   onfocus="(this.type='date')"
+                   onblur="if(!this.value)this.type='text'">
+          </div>
+        </div>
+
+
+        <div class="sec1">
+          <div class="contact-number">
+            <input type="text" th:field="*{user.personalContact}" th:value="${userWrapper.getUser().getPersonalContact()}" placeholder="Contact Number" id="contact-number">
+          </div>
+          <div class="email-id">
+            <input type="email" th:field="*{user.email}" th:value="${userWrapper.getUser().getEmail()}" placeholder="Email ID" id="email-id">
+          </div>
+        </div>
+
+
+        <div class="description">
+          <textarea placeholder="About" th:field="*{user.about}" th:text="${userWrapper.getUser().getAbout()}" id="description"></textarea>
+        </div>
+        <div class="submit-button">
+          <button type="submit">Update</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>
